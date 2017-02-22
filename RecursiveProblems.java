@@ -22,9 +22,10 @@ public class RecursiveProblems {
 	}
 
 	/**
-	 * Calculate the sum of first n 
+	 * Calculate the sum of first n Fibonacci number
+	 * NOTE: Exponential run time
 	 * @param n
-	 * @return
+	 * @return sum
 	 */
 	public int fibonacciSum (int n) 
 	{		  
@@ -78,24 +79,12 @@ public class RecursiveProblems {
 		RecursiveProblems rp = new RecursiveProblems();		
 		
 		long time = System.currentTimeMillis();
-		System.out.println( rp.fibonacciSum(49) );
+		//System.out.println( rp.fibonacciSum(49) );
 		System.out.println("Time: " + (System.currentTimeMillis() - time) );
 		
 		time = System.currentTimeMillis();
-		System.out.println( rp.fib(49) );
+		System.out.println( rp.fib(50) );
 		System.out.println("Time: " + (System.currentTimeMillis() - time) );
 	}
-	
-	/*
-	 *  Number 45 is: 701408733
-		Number 46 is: 1134903170
-		Number 47 is: 1836311903
-		Number 48 is: 2971215073
-		Number 49 is: 4807526976
-		Number 50 is: 7778742049
-		Number 51 is: 12586269025
-		Number 52 is: 20365011074
-	 */
-	
 	
 }
