@@ -1,8 +1,6 @@
 package Java_Challenges;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class AuthorSolutionLargest implements Comparator<Integer>{
@@ -32,12 +30,17 @@ public class AuthorSolutionLargest implements Comparator<Integer>{
 	public static void main (String [] args)
 	{
 		Integer[] values = {45, 4};
-		
+		Integer[] list = {50, 2, 1, 9};
+		Integer[] list2 = {3, 20, 40, 550, 8, 1, 6, 70, 9, 0};
+			
 		AuthorSolutionLargest solution = new AuthorSolutionLargest ();
 		
 		Arrays.sort(values, solution);	
+		Arrays.sort(list, solution);
+		Arrays.sort(list2, solution);
 		
 		solution.printLargest(values);
-		
+		solution.printLargest(list);
+		solution.printLargest(list2);		
 	}
 }    

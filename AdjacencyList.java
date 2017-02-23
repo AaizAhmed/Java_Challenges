@@ -24,14 +24,16 @@ public class AdjacencyList {
 			FileInputStream stream = new FileInputStream(string);
 			Scanner scan = new Scanner(stream);	
 			
-			while (scan.hasNext()) {
-
+			while (scan.hasNext()) 
+			{
 				//Reading the file line by line as a String
 				input += scan.next() + ",";		
 			} 
 			
 			//Parsing the string input using the comma
 			list = input.split(",");
+			
+			scan.close();
 			return list; 
 		}		
 		

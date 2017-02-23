@@ -16,8 +16,8 @@ public class Fibonacci {
 		BigInteger [] fib = new BigInteger[limit];
 		
 		// Adding first 2 numbers
-		fib[0]=BigInteger.ZERO;
-		fib[1]=BigInteger.ONE;
+		fib[0] = BigInteger.ZERO;
+		fib[1] = BigInteger.ONE;
 				
 		if ( limit > 2)
 		for (int i = 2; i < limit; i++)
@@ -28,6 +28,29 @@ public class Fibonacci {
 		
 		return fib;
 	}
+	
+	public static BigInteger FibSum(int n)
+    {
+		BigInteger a, b, c, d;
+		
+		a = BigInteger.ZERO;
+		b = BigInteger.ONE;
+		d = BigInteger.ONE;
+		
+        if (n == 0)
+        {	return a;	}
+        
+        for (int i = 2; i < n; i++)
+        {
+            c = a.add(b);
+            d = d.add(c);
+            
+            a = b;
+            b = c;              
+        }
+        
+        return d;
+    }
 
 	public static void main(String[] args) {
 		
@@ -37,6 +60,8 @@ public class Fibonacci {
 		{
 			System.out.println("Number " + (i + 1) + " is: " + fib100[i]);
 		}
+		
+		System.out.println( Fibonacci.FibSum(5) );
 
 	}
 
