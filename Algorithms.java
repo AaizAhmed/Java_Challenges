@@ -350,19 +350,59 @@ public class Algorithms
       return count;
    }
    
+   private static void permute(String prefix, String permMe)
+   {
+      int n = permMe.length();
+      
+      if (n == 0)
+      {
+         System.out.println(prefix);
+      }
+      else
+      {
+         for (int index = 0; index < n; index++)
+         {
+            permute( prefix+permMe.charAt(index), 
+                     permMe.substring(0, index)+permMe.substring(index+1, n));
+         }
+      }
+   }
+   
+   private static void permute_2(String permMe, int first, int last)
+   {
+      if (first == last)
+      {
+         System.out.println(permMe);
+      }
+      else
+      {
+         for (int index = first; index <= last; index++)
+         {
+            permMe = swap(permMe, first, index);
+            permute_2(permMe, first+1, last);
+            permMe = swap(permMe, first, index);
+         }
+      }      
+   }
+   
+   private static String swap(String str, int indexOne, int indexTwo)
+   {
+      char[] charArray = str.toCharArray();
+      char temp = charArray[indexOne];
+      charArray[indexOne] = charArray[indexTwo];
+      charArray[indexTwo] = temp;      
+      return String.valueOf(charArray);
+   }
+   
    public static void main(String[] args)
    {     
-      int[] myArr = new int[] {0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100};   
+//      int[] myArr = new int[] {0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100};   
       System.out.println( countZeros(2014) );
       
-      String one = "abbcdabbbbbck"; 
-      String two = "bbck";
-      
-      System.out.println( one.contains(two) );
-      System.out.println( one.indexOf(two) );
-      
-//      http://www.thatjsdude.com/interview/js1.html#missingNumber
-    
+//      String myStr = "abc";      
+//      permute("", myStr);      
+//      permute_2(myStr, 0, myStr.length()-1);
+
    }
 
 }
