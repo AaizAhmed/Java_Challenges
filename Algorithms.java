@@ -394,14 +394,42 @@ public class Algorithms
       return String.valueOf(charArray);
    }
    
+   private static int[] mergeArrays(int[] arrOne, int[] arrTwo)
+   {
+      
+      int[] merged = new int[arrOne.length + arrTwo.length];
+      
+      int indexOne = 0, indexTwo = 0, mergeIndex = 0;
+      
+      while(indexOne < arrOne.length && indexTwo < arrTwo.length)
+      {         
+         if (arrOne[indexOne] < arrTwo[indexTwo])
+         {
+            merged[mergeIndex++] = arrOne[indexOne++];
+         }
+         else
+         {
+            merged[mergeIndex++] = arrTwo[indexTwo++];
+         }
+      }
+      
+      System.arraycopy(arrOne, indexOne, merged, mergeIndex, (arrOne.length-indexOne));
+      System.arraycopy(arrTwo, indexTwo, merged, mergeIndex, (arrTwo.length-indexTwo));
+      
+      return merged;
+   }   
+   
    public static void main(String[] args)
    {     
-//      int[] myArr = new int[] {0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100};   
-      System.out.println( countZeros(2014) );
+      int[] myArr = new int[] {1, 2, 5, 7, 9};
+      int[] myArr_1 = new int[] {1, 2, 4, 6, 8, 10};
       
-//      String myStr = "abc";      
-//      permute("", myStr);      
-//      permute_2(myStr, 0, myStr.length()-1);
+      int[] myArr_2 = mergeArrays(myArr, myArr_1);
+      
+      for (int num: myArr_2)
+      {
+         System.out.println( num );
+      } 
 
    }
 
