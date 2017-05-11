@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
+import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -395,8 +396,7 @@ public class Algorithms
    }
    
    private static int[] mergeArrays(int[] arrOne, int[] arrTwo)
-   {
-      
+   {      
       int[] merged = new int[arrOne.length + arrTwo.length];
       
       int indexOne = 0, indexTwo = 0, mergeIndex = 0;
@@ -417,19 +417,62 @@ public class Algorithms
       System.arraycopy(arrTwo, indexTwo, merged, mergeIndex, (arrTwo.length-indexTwo));
       
       return merged;
-   }   
+   } 
+   
+   public static int solution(int[] A) 
+  {
+      int[] sumPrevious = new int [A.length];
+      int[] sumNext = new int [A.length];
+      
+      ArrayList<Integer> equilibrium = new ArrayList<Integer>();
+      
+      int sum = 0;
+      
+      // Get the sum
+      for (int i = 0; i < A.length; i++)
+      {
+         sumPrevious[i] = sum;
+         sum += A[i];         
+
+         // System.out.println( "Sum of P[" + i + "] is: " +  sumPrevious[i]);
+      }
+            
+      // Get the sum of next numbers
+      for (int i = 0; i < A.length; i++)
+      {
+         sumNext[i] = sum - (sumPrevious[i] + A[i]);
+         
+         // System.out.println( "Sum of N[" + i + "] is: " +  sumNext[i]);
+         
+         if (sumPrevious[i] == sumNext[i])
+         {
+            equilibrium.add(i);
+         }
+      }
+      
+      if (equilibrium.size() > 0)
+      {
+         Random rand = new Random();
+         int num = rand.nextInt(equilibrium.size());
+         
+         return equilibrium.get(num);
+      }
+      else
+      {
+         return -1;
+      }
+  }
    
    public static void main(String[] args)
    {     
-      int[] myArr = new int[] {1, 2, 5, 7, 9};
-      int[] myArr_1 = new int[] {1, 2, 4, 6, 8, 10};
+//      int[] myArr = new int[] {1, 2, 5, 7, 9};
+//      int[] myArr_1 = new int[] {1, 2, 4, 6, 8, 10};
+//      
+//      int[] myArr_2 = mergeArrays(myArr, myArr_1);
       
-      int[] myArr_2 = mergeArrays(myArr, myArr_1);
+      int[] A = new int[] {0, -2147483648, -2147483648};
       
-      for (int num: myArr_2)
-      {
-         System.out.println( num );
-      } 
+      System.out.println("Equb: " + solution(A) );      
 
    }
 
